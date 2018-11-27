@@ -12,8 +12,8 @@ public class InfralVectorData extends XYVectorData{
 		this.yMin = yMin;
 		this.xMax = xMax;
 		this.xMin = xMin;
-	}
-
+	}	
+	
 
 	@Override
 	public double xMin() {

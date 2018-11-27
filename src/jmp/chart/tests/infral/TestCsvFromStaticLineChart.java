@@ -22,15 +22,16 @@ import jmp.chart.model.DefaultAutoScaleStrategy;
 import jmp.chart.model.LineChartModel;
 import jmp.chart.model.Side;
 import jmp.chart.view.LineChartView;
+import jmp.fileReader.CSVReader;
 import jmp.infral.Constants;
 import jmp.infral.SoundAcquisitionParams;
 import jmp.infral.audioRecorder.RecorderListener;
 import jmp.infral.audioRecorder.RecorderSimulator;
 import jmp.infral.models.DataModel;
+import jmp.readenFile.ReadenCSV;
 import jmp.utils.CircularArray;
 import wave.WavFileException;
 
-import jmp.CSV.CSVReader;
 
 public class TestCsvFromStaticLineChart extends JFrame
 {
@@ -87,7 +88,8 @@ public class TestCsvFromStaticLineChart extends JFrame
 	private void init() throws NumberFormatException, IOException
 	{
 		CSVReader r = new CSVReader(filePath);
-		InfralVectorData chartData = r.read();
+		ReadenCSV rcsv = r.read(0, 1);
+		InfralVectorData chartData = rcsv.toInfralVectorData();
 		((LineChartModel)this.chartView.chartModel()).setData(chartData);
 		
 		
