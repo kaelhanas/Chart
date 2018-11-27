@@ -11,12 +11,13 @@ import jmp.chart.data.xy.InfralVectorData;
 import jmp.readenFile.ReadenCSV;
 import jmp.readenFile.ReadenFile;
 
-public class CSVReader extends FileReader{
+public class CSVReader /*extends FileReader*/{
 
 	private String csvPath;
 
-	public CSVReader(String scvPath) throws FileNotFoundException {
-		super(scvPath);
+	public CSVReader(String csvPath) throws FileNotFoundException {
+		//super(csvPath);
+		this.csvPath = csvPath;
 	}
 
 	protected static Boolean hasLabel(String path) throws IOException {
@@ -101,9 +102,9 @@ public class CSVReader extends FileReader{
 						yMin = Double.parseDouble(data);
 				}
 
-				else
+				/*else
 					System.out.println("Invalid Data::" + data);
-
+				*/
 				index++;
 			}
 			index = 0;

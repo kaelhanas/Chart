@@ -85,10 +85,10 @@ public class TestCsvFromStaticLineChart extends JFrame
 	}
 	
 	
-	private void init() throws NumberFormatException, IOException
+	private void init() throws NumberFormatException, IOException, IndexOutOfBoundsException
 	{
 		CSVReader r = new CSVReader(filePath);
-		ReadenCSV rcsv = r.read(0, 1);
+		ReadenCSV rcsv = r.read(0, 2);
 		InfralVectorData chartData = rcsv.toInfralVectorData();
 		((LineChartModel)this.chartView.chartModel()).setData(chartData);
 		
@@ -102,7 +102,8 @@ public class TestCsvFromStaticLineChart extends JFrame
 		
 	public static void main(String[] args)
 	{
-		final TestCsvFromStaticLineChart app = new TestCsvFromStaticLineChart(Constants.csvPath2);
+		final TestCsvFromStaticLineChart app = new TestCsvFromStaticLineChart(Constants.csvPath);
+		//final TestCsvFromStaticLineChart app = new TestCsvFromStaticLineChart(Constants.csvPath);
 		EventQueue.invokeLater(new Runnable()
 		{
 			public void run()
