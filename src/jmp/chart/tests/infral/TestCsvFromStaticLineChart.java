@@ -13,7 +13,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import jmp.chart.Default;
-import jmp.chart.data.xy.InfralVectorData;
+import jmp.chart.controller.DefaultChartController;
+import jmp.chart.data.xy.DefaultVectorData;
 import jmp.chart.data.xy.XYCircularData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.AutoScaleStrategy;
@@ -81,7 +82,7 @@ public class TestCsvFromStaticLineChart extends JFrame
 		
 		this.getContentPane().add(this.chartView, BorderLayout.CENTER);
 		this.chartView.setSize(new Dimension(1000,500));
-		this.chartView.setController(new InfralChartController());
+		this.chartView.setController(new DefaultChartController());
 	}
 	
 	
@@ -89,11 +90,9 @@ public class TestCsvFromStaticLineChart extends JFrame
 	{
 		CSVReader r = new CSVReader(filePath);
 		ReadenCSV rcsv = r.read(0, 2);
-		InfralVectorData chartData = rcsv.toInfralVectorData();
+		DefaultVectorData chartData = rcsv.toInfralVectorData();
 		((LineChartModel)this.chartView.chartModel()).setData(chartData);
 		
-		
-		//TO-DO ajout lecture label de la premiere ligne du CSV si label il y'a avec potentiellement selection de l'index de colonne a choisir pour x et y
 		
 		this.chartView.autoScaleX(new DefaultAutoScaleStrategy(1));
 		this.chartView.autoScaleY(new DefaultAutoScaleStrategy(1));

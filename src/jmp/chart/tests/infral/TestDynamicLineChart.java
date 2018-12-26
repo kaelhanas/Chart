@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import jmp.chart.Default;
+import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.AxisModel;
 import jmp.chart.model.DefaultAutoScaleStrategy;
@@ -75,7 +76,7 @@ public class TestDynamicLineChart extends JFrame
 		this.chartView.chartRenderingModel().setMargin(Side.Left, 100);
 		this.getContentPane().add(this.chartView, BorderLayout.CENTER);
 		this.chartView.setSize(new Dimension(1000,500));
-		this.chartView.setController(new InfralChartController());
+		this.chartView.setController(new DefaultChartController());
 	}
 	
 	private void init()
@@ -84,8 +85,8 @@ public class TestDynamicLineChart extends JFrame
 		{
 			final int DATA_SIZE = 300000;
 
-			this.recorder = new RecorderSimulator(Constants.path);
-			//this.recorder = new MicroRecorder();
+			//this.recorder = new RecorderSimulator(Constants.path);
+			this.recorder = new MicroRecorder();
 
 			this.dataModel = new DataModel(DATA_SIZE);
 			

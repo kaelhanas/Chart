@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.map.MapSampledCircularData;
 import jmp.chart.model.AxisModel;
 import jmp.chart.model.DefaultAutoScaleStrategy;
@@ -70,7 +71,7 @@ public class TestMapChart extends JFrame
 		((MapChartRenderingModel)this.chartView.chartRenderingModel()).setValueColors(this.infralColor());
 		this.getContentPane().add(this.chartView, BorderLayout.CENTER);
 		this.chartView.setSize(new Dimension(1000,500));
-		this.chartView.setController(new InfralChartController());
+		this.chartView.setController(new DefaultChartController());
 	}
 	
 	private Color[] infralColor()

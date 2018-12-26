@@ -7,6 +7,14 @@ public abstract class XYVectorData implements XYData{
 	private ArrayList<Double> xdata;
 	private ArrayList<Double> ydata;
 	
+	
+	// Besoin pour ENTRY - Choix judicieux? idk
+	public XYVectorData()
+	{
+		this.xdata = new ArrayList<Double>();
+		this.ydata = new ArrayList<Double>();
+	}
+	
 	public XYVectorData(int size)
 	{
 		this.xdata = new ArrayList<Double>(size);

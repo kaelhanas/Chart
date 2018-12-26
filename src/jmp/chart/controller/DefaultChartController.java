@@ -1,4 +1,4 @@
-package jmp.chart.tests.infral;
+package jmp.chart.controller;
 
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
@@ -14,13 +14,13 @@ import jmp.chart.renderer.ChartRenderer;
 import jmp.chart.view.ChartView;
 import jmp.ui.mvc.Controller;
 
-public class InfralChartController extends Controller
+public class DefaultChartController extends Controller
 {
 	private DragContext dragContext;
 	private CursorModel cursorSelected;
 	private Rectangle cursorSelection;
 
-	public InfralChartController()
+	public DefaultChartController()
 	{
 		super(null);
 		this.dragContext = new DragContext();

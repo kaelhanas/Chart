@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import jmp.chart.Default;
+import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.xy.XYCircularData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.AutoScaleStrategy;
@@ -74,7 +75,7 @@ public class TestStaticLineChart extends JFrame
 		
 		this.getContentPane().add(this.chartView, BorderLayout.CENTER);
 		this.chartView.setSize(new Dimension(1000,500));
-		this.chartView.setController(new InfralChartController());
+		this.chartView.setController(new DefaultChartController());
 	}
 	
 	

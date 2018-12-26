@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 import jmp.chart.Default;
+import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.map.MapSampledCircularData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.AxisModel;
@@ -136,7 +137,7 @@ public class TestStaticLineMapChart extends JFrame
 		this.lineChartView.chartModel().setVerticalGridLineVisible(true);
 		this.lineChartView.chartRenderingModel().setMargin(Side.Left, LEFT_MARGIN);
 		this.lineChartView.setSize(VIEW_SIZE);
-		this.lineChartView.setController(new InfralChartController());
+		this.lineChartView.setController(new DefaultChartController());
 	}
 
 	private void setupMapChartView()
@@ -153,7 +154,7 @@ public class TestStaticLineMapChart extends JFrame
 		((MapChartRenderingModel)this.mapChartView.chartRenderingModel()).setValueColors(this.infralColor());
 		this.getContentPane().add(this.mapChartView, BorderLayout.CENTER);
 		this.mapChartView.setSize(VIEW_SIZE);
-		this.mapChartView.setController(new InfralChartController());
+		this.mapChartView.setController(new DefaultChartController());
 	}
 
 	private Color[] infralColor()
@@ -202,7 +203,11 @@ public class TestStaticLineMapChart extends JFrame
 
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(8000);
 
+			
+			
+			//
 			//Line chart View data
+			//
 			XYSampledCircularData lineChartData = new InfralSampleDataXY(DATA_SIZE, sap);
 			((LineChartModel) this.lineChartView.chartModel()).setData(lineChartData);
 
@@ -227,7 +232,9 @@ public class TestStaticLineMapChart extends JFrame
 				}
 			});
 
+			//
 			//Map chart View data
+			//
 			MapSampledCircularData mapChartData = new InfralSampleDataMap(DATA_SIZE, sap,SPECTRUM_STEP);
 			((MapChartModel)this.mapChartView.chartModel()).setData(mapChartData);
 			

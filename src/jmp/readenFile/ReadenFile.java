@@ -1,9 +1,9 @@
 package jmp.readenFile;
 
-import jmp.chart.data.xy.InfralVectorData;
+import jmp.chart.data.xy.DefaultVectorData;
 
 public interface ReadenFile {
 
-	InfralVectorData toInfralVectorData();
+	DefaultVectorData toInfralVectorData();
 	
 }

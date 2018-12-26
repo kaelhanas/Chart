@@ -7,16 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import jmp.chart.data.xy.InfralVectorData;
+import jmp.chart.data.xy.DefaultVectorData;
 import jmp.readenFile.ReadenCSV;
 import jmp.readenFile.ReadenFile;
 
-public class CSVReader /*extends FileReader*/{
+public class CSVReader extends FileReader{
 
 	private String csvPath;
 
 	public CSVReader(String csvPath) throws FileNotFoundException {
-		//super(csvPath);
+		super(csvPath);
 		this.csvPath = csvPath;
 	}
 
@@ -40,6 +40,7 @@ public class CSVReader /*extends FileReader*/{
 	}
 
 	public ReadenCSV read(String xlabelName, String yLabelName) {
+		//TO-DO chercher les colonnes par label, necessite que les colonnes du CSV aient des label => création d'une exception lié à "hasLabel"
 		return null;
 	}
 
@@ -102,9 +103,6 @@ public class CSVReader /*extends FileReader*/{
 						yMin = Double.parseDouble(data);
 				}
 
-				/*else
-					System.out.println("Invalid Data::" + data);
-				*/
 				index++;
 			}
 			index = 0;

@@ -2,7 +2,7 @@ package jmp.readenFile;
 
 import java.util.ArrayList;
 
-import jmp.chart.data.xy.InfralVectorData;
+import jmp.chart.data.xy.DefaultVectorData;
 
 public class ReadenCSV implements ReadenFile{
 
@@ -36,8 +36,8 @@ public class ReadenCSV implements ReadenFile{
 		this.xMax = xMax;
 		this.yMin = yMin;
 		this.yMax = yMax;
-		this.xLabel = "defaultXLabel"; // TO-DO A ajouter dans une table de constante
-		this.yLabel = "defaultYLabel"; // TO-DO same
+		this.xLabel = "defaultXLabel";
+		this.yLabel = "defaultYLabel"; 
 	}
 
 	public ReadenCSV(String xLabel, ArrayList<Double> xdata, double xMin, double xMax, String yLabel, ArrayList<Double> ydata,
@@ -116,9 +116,9 @@ public class ReadenCSV implements ReadenFile{
 		this.yMax = yMax;
 	}
 	
-	public InfralVectorData toInfralVectorData()
+	public DefaultVectorData toInfralVectorData()
 	{
-		InfralVectorData tmp = new InfralVectorData(this.xdata.size(), yMin, yMax, xMin, xMax);
+		DefaultVectorData tmp = new DefaultVectorData(this.xdata.size(), yMin, yMax, xMin, xMax);
 		for(int i=0; i<this.xdata.size(); i++)
 		{
 			tmp.addX(xdata.get(i));
