@@ -2,17 +2,31 @@ package jmp.factory.test;
 
 import java.awt.EventQueue;
 import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import jmp.chart.Default;
+import jmp.chart.data.xy.DefaultSampleDataXY;
+import jmp.chart.data.xy.XYSampledCircularData;
+import jmp.chart.model.DefaultAutoScaleStrategy;
+import jmp.chart.model.LineChartModel;
+import jmp.chart.view.ChartView;
 import jmp.chart.view.LineChartView;
 import jmp.config.config.Config;
 import jmp.config.config.LineChartConfig;
 import jmp.factory.factory.ChartFactory;
 import jmp.factory.factory.LineChartFactory;
+import jmp.infral.Constants;
+import jmp.infral.SoundAcquisitionParams;
+import jmp.infral.audioRecorder.Recorder;
+import jmp.infral.audioRecorder.RecorderListener;
+import jmp.infral.audioRecorder.RecorderSimulator;
+import jmp.infral.models.DataModel;
+import wave.WavFileException;
 
 public class TestLineChartConfigFactory extends JFrame {
 
@@ -26,6 +40,95 @@ public class TestLineChartConfigFactory extends JFrame {
 
 		this.pack();
 		this.setVisible(true);
+	}
+	
+	private void init(LineChartView chartView)
+	{
+		try
+		{
+			final int DATA_SIZE = 300000;
+
+			RecorderSimulator recorder = new RecorderSimulator(Constants.path);
+			final DataModel dataModel = new DataModel(DATA_SIZE);
+
+			recorder.addAppendRecorderListener(new RecorderListener()
+			{
+
+				@Override
+				public void onStop()
+				{
+				}
+
+				@Override
+				public void onRecord(int[] newdata)
+				{
+					dataModel.append(newdata);
+				}
+
+				@Override
+				public void onStart()
+				{}
+			});
+
+			recorder.loadSong();
+
+			SoundAcquisitionParams sap = new SoundAcquisitionParams(8000);
+			
+			
+			XYSampledCircularData chartData = new DefaultSampleDataXY(DATA_SIZE, sap);
+			((LineChartModel) chartView.chartModel()).setData(chartData);
+						
+			int count =0;
+			for (Integer v : dataModel.data())
+			{
+				chartData.add(v.doubleValue());
+				count+=1;
+			}
+			System.out.print(count);
+			
+			chartView.autoScaleX(new DefaultAutoScaleStrategy(100));
+		
+			
+			chartView.autoScaleY(new DefaultAutoScaleStrategy(0.1)
+			{
+				@Override
+				public void process(double lowerBound, double upperBound)
+				{
+					super.process(lowerBound, upperBound);
+					double min = Math.abs(this.lowerBound);
+					double max = this.upperBound;
+					double limit = (min>max)? min : max;
+					this.lowerBound = -limit;
+					this.upperBound = +limit;
+					this.tickUnit = (this.upperBound-this.lowerBound)/Default.DEFAULT_TICK_RATIO;
+				}	
+			});
+
+			
+			/*
+			InfralCircularData chartData = new InfralCircularData(DATA_SIZE, sap);
+			((LineChartModel)this.chartView.chartModel()).setData(chartData);
+						
+			int sample=0;
+			for (Integer v : this.dataModel.data())
+			{
+				chartData.addY(v.doubleValue());
+				chartData.addX(sap.computeTime(sample++));
+			}
+			*/
+		}
+		catch (WavFileException ex)
+		{
+			ex.printStackTrace();
+		}
+		catch (FileNotFoundException ex)
+		{
+			ex.printStackTrace();
+		}
+		catch (IOException ex)
+		{
+			ex.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
@@ -42,6 +145,10 @@ public class TestLineChartConfigFactory extends JFrame {
 					Config config = new LineChartConfig(path);
 					LineChartView chartView = (LineChartView) factory.buildChart(app, config);
 
+					
+					// Data section
+					app.init(chartView);
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -54,5 +161,7 @@ public class TestLineChartConfigFactory extends JFrame {
 
 		);
 	}
+
+
 
 }

@@ -4,14 +4,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import jmp.chart.view.ChartView;
+import jmp.chart.view.LineChartView;
 import jmp.config.config.Config;
-import jmp.entry.Entry;
+import jmp.entry.entry.Entry;
 
-public interface ChartFactory{
+public abstract class ChartFactory{
 
-	ChartView buildChart();
-	ChartView buildChart(JFrame frame);
-	ChartView buildChart(JFrame frame, Config config);
-	ChartView buildChart(Entry entry, Config config);
+	public abstract ChartView buildChart();
+	public abstract ChartView buildChart(JFrame frame);
+	public abstract ChartView buildChart(JFrame frame, Config config);
+	
+	/*public ChartView getChartView(String chartViewType, JFrame frame)
+	{
+		LineChartFactory f = new LineChartFactory();
+		return (LineChartView)f.buildChart(frame);
+	}*/
 	
 }

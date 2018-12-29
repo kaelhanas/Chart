@@ -13,9 +13,9 @@ import jmp.chart.model.Side;
 import jmp.chart.view.ChartView;
 import jmp.chart.view.LineChartView;
 import jmp.config.config.Config;
-import jmp.entry.Entry;
+import jmp.entry.entry.Entry;
 
-public class LineChartFactory implements ChartFactory{
+public class LineChartFactory extends ChartFactory{
 
 	public LineChartFactory()
 	{}
@@ -68,23 +68,24 @@ public class LineChartFactory implements ChartFactory{
 		ChartView chartView = new LineChartView(new AxisModel(0,30,1), new AxisModel("yLabel",  -1000,1000,500));
 		try {
 			config.readConfig(config.configFilePath());
+		
+			chartView.xAxisModel().setMinorTickVisible(config.xAxisMinorTickVisible());
+			chartView.yAxisModel().setMinorTickVisible(config.yAxisMinorTickVisible());
+			chartView.xAxisRenderingModel().setMinortickColor(config.xAxisMinorTickColor());
+			chartView.yAxisRenderingModel().setMinortickColor(config.yAxisMinorTickColor());
+			chartView.xAxisModel().setLabel(config.xAxisLabel());
+			chartView.yAxisModel().setLabel(config.yAxisLabel());
+			chartView.chartModel().setHoriziontalGridLineVisible(config.horizontalGridLineVisible());
+			chartView.chartModel().setVerticalGridLineVisible(config.verticalGridLineTickVisible());
+			chartView.chartRenderingModel().setMargin(config.marginSide(), config.marginValue());
+			frame.getContentPane().add(chartView, BorderLayout.CENTER);
+			chartView.setSize(config.viewSize());
+			chartView.setController(new DefaultChartController());
+		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		chartView.xAxisModel().setMinorTickVisible(config.xAxisMinorTickVisible());
-		chartView.yAxisModel().setMinorTickVisible(config.yAxisMinorTickVisible());
-		chartView.xAxisRenderingModel().setMinortickColor(config.xAxisMinorTickColor());
-		chartView.yAxisRenderingModel().setMinortickColor(config.yAxisMinorTickColor());
-		chartView.xAxisModel().setLabel(config.xAxisLabel());
-		chartView.yAxisModel().setLabel(config.yAxisLabel());
-		chartView.chartModel().setHoriziontalGridLineVisible(config.horizontalGridLineVisible());
-		chartView.chartModel().setVerticalGridLineVisible(config.verticalGridLineTickVisible());
-		chartView.chartRenderingModel().setMargin(config.marginSide(), config.marginValue());
-		frame.getContentPane().add(chartView, BorderLayout.CENTER);
-		chartView.setSize(config.viewSize());
-		chartView.setController(new DefaultChartController());
 		
 	
 		return chartView;

@@ -20,7 +20,7 @@ public class CSVReader extends FileReader{
 		this.csvPath = csvPath;
 	}
 
-	protected static Boolean hasLabel(String path) throws IOException {
+	private static Boolean hasLabel(String path) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		boolean hasLabel = true;
 
@@ -66,13 +66,13 @@ public class CSVReader extends FileReader{
 					// System.out.println("index0::"+index);
 
 					if (index == xLabelIndex) {
-						// System.out.println("Enter in Xlabel at index ="+index);
+						 System.out.println("Enter in Xlabel at index ="+index);
 						readenCSV.setxLabel(data);
 						;
 					}
 
 					else if (index == yLabelIndex) {
-						// System.out.println("Enter in Ylabel at index ="+index);
+						 System.out.println("Enter in Ylabel at index ="+index);
 						readenCSV.setyLabel(data);
 						;
 					}

@@ -17,6 +17,8 @@ import javax.swing.JFrame;
 import jmp.chart.Default;
 import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.map.MapSampledCircularData;
+import jmp.chart.data.xy.DefaultSampleDataMap;
+import jmp.chart.data.xy.DefaultSampleDataXY;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.AxisModel;
 import jmp.chart.model.DefaultAutoScaleStrategy;
@@ -208,7 +210,7 @@ public class TestStaticLineMapChart extends JFrame
 			//
 			//Line chart View data
 			//
-			XYSampledCircularData lineChartData = new InfralSampleDataXY(DATA_SIZE, sap);
+			XYSampledCircularData lineChartData = new DefaultSampleDataXY(DATA_SIZE, sap);
 			((LineChartModel) this.lineChartView.chartModel()).setData(lineChartData);
 
 			for (Integer v : this.dataModel.data())
@@ -235,7 +237,7 @@ public class TestStaticLineMapChart extends JFrame
 			//
 			//Map chart View data
 			//
-			MapSampledCircularData mapChartData = new InfralSampleDataMap(DATA_SIZE, sap,SPECTRUM_STEP);
+			MapSampledCircularData mapChartData = new DefaultSampleDataMap(DATA_SIZE, sap,SPECTRUM_STEP);
 			((MapChartModel)this.mapChartView.chartModel()).setData(mapChartData);
 			
 			for (double[] v : this.spectrumModel.data())

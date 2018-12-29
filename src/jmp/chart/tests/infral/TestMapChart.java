@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.map.MapSampledCircularData;
+import jmp.chart.data.xy.DefaultSampleDataMap;
 import jmp.chart.model.AxisModel;
 import jmp.chart.model.DefaultAutoScaleStrategy;
 import jmp.chart.model.MapChartModel;
@@ -127,7 +128,7 @@ public class TestMapChart extends JFrame
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(8000);
 			
 			
-			MapSampledCircularData chartData = new InfralSampleDataMap(DATA_SIZE, sap,SPECTRUM_STEP);
+			MapSampledCircularData chartData = new DefaultSampleDataMap(DATA_SIZE, sap,SPECTRUM_STEP);
 			((MapChartModel)this.chartView.chartModel()).setData(chartData);
 			
 			

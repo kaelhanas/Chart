@@ -1,14 +1,13 @@
-package jmp.chart.tests.infral;
+package jmp.chart.data.xy;
 
-import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.infral.SoundAcquisitionParams;
 
-public class InfralSampleDataXY extends XYSampledCircularData
+public class DefaultSampleDataXY extends XYSampledCircularData
 {
 	private final SoundAcquisitionParams soundParams;
 	private double yMin, yMax;
 	
-	public InfralSampleDataXY(int size, SoundAcquisitionParams sp)
+	public DefaultSampleDataXY(int size, SoundAcquisitionParams sp)
 	{
 		super(size);
 		this.soundParams = sp;

@@ -59,9 +59,9 @@ public class LineChartConfig extends Config{
 		reader.close();
 	}
 
-	private void dataTypeAnalysis(String dataType, String data) {
+	private void dataTypeAnalysis(String dataType, String data) throws IllegalArgumentException{
 		
-		System.out.println("I'm in "+dataType+" Boss");
+		//System.out.println("I'm in "+dataType+" Sir");
 		switch(dataType){
 		
 			case "X_AXIS_MINORTICK_VISIBLE" : 
@@ -77,19 +77,19 @@ public class LineChartConfig extends Config{
 				this.setVERTICAL_GRIDLINE_VISIBLE(Boolean.parseBoolean(data)); break;
 				
 			case "MARGIN_SIDE" : 
-				switch(data){
-					case "Left" :
-						this.setMARGIN_SIDE(Side.Left);
-					case "Right" :
-						this.setMARGIN_SIDE(Side.Right);
-					case "Top" :
-						this.setMARGIN_SIDE(Side.Top);
-					case "Bottom" :
-						this.setMARGIN_SIDE(Side.Bottom);
+				switch(data.toLowerCase()){
+					case "left" :
+						this.setMARGIN_SIDE(Side.Left); break;
+					case "right" :
+						this.setMARGIN_SIDE(Side.Right); break;
+					case "top" :
+						this.setMARGIN_SIDE(Side.Top); break;
+					case "bottom" :
+						this.setMARGIN_SIDE(Side.Bottom); break;
+					default: throw new IllegalArgumentException();
 				} break;
 			
 			case "MARGIN_VALUE" : 
-				System.out.println(data);
 				this.setMARGIN_VALUE(Double.parseDouble(data));; break;
 		
 			
@@ -109,14 +109,15 @@ public class LineChartConfig extends Config{
 				
 			case "X_AXIS_MINORTICK_COLOR" : 
 				MyColor xColor = new MyColor();
-				System.out.println(xColor.getColor(data));
+				//System.out.println(xColor.getColor(data));
 				this.setX_AXIS_MINORTICK_COLOR(xColor.getColor(data)); break;
 			
 			case "Y_AXIS_MINORTICK_COLOR" : 
 				MyColor yColor = new MyColor();
-				System.out.println(yColor.getColor(data));
+				//System.out.println(yColor.getColor(data));
 				this.setY_AXIS_MINORTICK_COLOR(yColor.getColor(data)); break;
-					
+				
+			default : throw new IllegalArgumentException();
 			
 		}
 		

@@ -1,38 +1,33 @@
-package jmp.chart.tests.infral;
+package jmp.chart.data.map;
 
-import jmp.chart.data.map.MapSampledCircularData;
 import jmp.infral.SoundAcquisitionParams;
 
-public class InfralSampleDataMap extends MapSampledCircularData
+public class DefaultDataMap extends MapCircularData
 {
-	// voir Antoine !!
 	private final static double SCALE = 1.9;
-
+	
 	private final SoundAcquisitionParams soundParams;
 	private final int fftStep;
-
-	public InfralSampleDataMap(int size, SoundAcquisitionParams sp, int fftStep)
+	
+	public DefaultDataMap(int xsize,int ySize, SoundAcquisitionParams sp, int fftStep)
 	{
-		super(size);
+		super(xsize, ySize);
 		this.soundParams = sp;
 		this.fftStep = fftStep;
 	}
-
-	@Override
+	
 	protected double getXSampleValue(int sample)
 	{
-		return this.soundParams.computeTime(sample) * this.fftStep;
+		return this.soundParams.computeTime(sample)*this.fftStep;
 	}
 
-	@Override
 	protected double getYSampleValue(int sample)
 	{
-		return this.soundParams.computeFrequency(sample, this.ySize() * 2);
+		return this.soundParams.computeFrequency(sample, this.ySize()*2);
 	}
-
-	private double normalizeColor(double d)
-	{
-		return Math.max(Math.pow(Math.max(Math.log(Math.abs(d)), 0), 2) * SCALE, 0);
+	
+	private double normalizeColor(double d) {
+		return  Math.max(Math.pow(Math.max(Math.log(Math.abs(d)), 0), 2) * SCALE, 0);
 	}
 
 	@Override
@@ -57,14 +52,13 @@ public class InfralSampleDataMap extends MapSampledCircularData
 	public double yMax()
 	{
 		return this.getYSampleValue(this.ySize());
-	}	
+	}
 	
 	@Override
-	public void add(double[] value)
+	public void addValues(double[] value)
 	{
 		for(int i=0; i< value.length; i++)
 			value[i] = this.normalizeColor(value[i]);
-		super.add(value);
+		super.addValues(value);
 	}
-
 }

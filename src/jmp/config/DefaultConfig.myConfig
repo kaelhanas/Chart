@@ -14,7 +14,7 @@ MARGIN_SIDE = Left
 
 // Double values
 
-MARGIN_VALUE = 100
+MARGIN_VALUE = 80
 
 // Integer values
 CHART_WIDTH = 1000
