@@ -33,6 +33,8 @@ public abstract class Config {
 	}
 
 	public abstract void readConfig(String path) throws IOException;
+	
+	public abstract ConfigType getConfigType();
 
 	public String configFilePath()
 	{

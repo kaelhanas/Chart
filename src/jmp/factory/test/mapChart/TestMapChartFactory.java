@@ -1,19 +1,19 @@
-package jmp.factory.test;
+package jmp.factory.test.mapChart;
 
 import java.awt.EventQueue;
 import java.awt.event.WindowEvent;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import jmp.chart.view.LineChartView;
+import jmp.chart.view.MapChartView;
 import jmp.factory.factory.ChartFactory;
 import jmp.factory.factory.LineChartFactory;
+import jmp.factory.factory.MapChartFactory;
+import jmp.factory.test.lineChart.TestLineChartFactory;
 
-public class TestLineChartFactory extends JFrame {
+public class TestMapChartFactory extends JFrame{
 
-	
 	public void setup()
 	{
 		this.setTitle("Test charts");
@@ -38,8 +38,8 @@ public class TestLineChartFactory extends JFrame {
 				
 				
 				// Use of Factories
-				final ChartFactory factory = new LineChartFactory();
-				LineChartView chartView = (LineChartView) factory.buildChart(app);
+				final ChartFactory factory = new MapChartFactory();
+				MapChartView chartView = (MapChartView) factory.buildChart(app);
 				
 				app.setup();
 				
@@ -48,5 +48,5 @@ public class TestLineChartFactory extends JFrame {
 
 		);
 	}
-
+	
 }

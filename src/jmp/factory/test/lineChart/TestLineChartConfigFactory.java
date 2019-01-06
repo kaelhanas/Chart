@@ -1,4 +1,4 @@
-package jmp.factory.test;
+package jmp.factory.test.lineChart;
 
 import java.awt.EventQueue;
 import java.awt.event.WindowEvent;

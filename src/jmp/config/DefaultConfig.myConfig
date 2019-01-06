@@ -1,5 +1,5 @@
 // All lines starting with a space or // will be ignored by the parser associate to this file extension.
-
+// In case you would like to add more parameters, make sure to ass it in each switch cases of LineChartConfig and MapChartConfig reader
 
 // Boolean values
 
@@ -21,7 +21,6 @@ CHART_WIDTH = 1000
 CHART_HEIGHT = 500
 
 // String values
-
 X_AXIS_LABEL = xLabel
 Y_AXIS_LABEL = yLabel
 
@@ -29,3 +28,15 @@ Y_AXIS_LABEL = yLabel
 
 X_AXIS_MINORTICK_COLOR = red
 Y_AXIS_MINORTICK_COLOR = red
+
+//
+// Map : Spectrum configuration
+//
+
+//Integer
+DATA_SIZE = 300000
+SPECTRUM_SIZE = 1024
+SPECTRUM_STEP = 100
+
+//Color
+BACKGROUND_COLOR = black

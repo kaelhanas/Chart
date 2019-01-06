@@ -13,6 +13,8 @@ import jmp.chart.model.Side;
 import jmp.chart.view.ChartView;
 import jmp.chart.view.LineChartView;
 import jmp.config.config.Config;
+import jmp.config.config.ConfigType;
+import jmp.config.config.IllegalConfigTypeException;
 import jmp.entry.entry.Entry;
 
 public class LineChartFactory extends ChartFactory{
@@ -67,6 +69,7 @@ public class LineChartFactory extends ChartFactory{
 		
 		ChartView chartView = new LineChartView(new AxisModel(0,30,1), new AxisModel("yLabel",  -1000,1000,500));
 		try {
+			if(config.getConfigType()!=ConfigType.LineChartConfig) {throw new IllegalConfigTypeException();}
 			config.readConfig(config.configFilePath());
 		
 			chartView.xAxisModel().setMinorTickVisible(config.xAxisMinorTickVisible());
@@ -84,6 +87,9 @@ public class LineChartFactory extends ChartFactory{
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalConfigTypeException e) {
+			System.out.println("Config argument should be a LineChartConfig one");
 			e.printStackTrace();
 		}
 		

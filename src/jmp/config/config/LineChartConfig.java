@@ -117,10 +117,28 @@ public class LineChartConfig extends Config{
 				//System.out.println(yColor.getColor(data));
 				this.setY_AXIS_MINORTICK_COLOR(yColor.getColor(data)); break;
 				
+			//Map configuration, ignored here
+			case "DATA_SIZE" :
+				break;
+			case "SPECTRUM_SIZE" :
+				break;
+			case "SPECTRUM_STEP" :
+				break;
+			case "BACKGROUND_COLOR" :
+					break;
+				
+			//Allow to inform the user that his config file contains an error
 			default : throw new IllegalArgumentException();
 			
 		}
 		
 	}
+
+
+
+	public ConfigType getConfigType() {
+		return ConfigType.LineChartConfig;
+	}
+	
 	
 }
