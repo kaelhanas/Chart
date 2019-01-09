@@ -19,50 +19,6 @@ import jmp.entry.entry.Entry;
 
 public class LineChartFactory extends ChartFactory{
 
-	public LineChartFactory()
-	{}
-	
-	public ChartView buildChart()
-	{
-		ChartView chartView = new LineChartView(new AxisModel(0,30,1), new AxisModel("yLabel",  -1000,1000,500));
-		chartView.xAxisModel().setMinorTickVisible(true);
-		chartView.yAxisModel().setMinorTickVisible(true);
-		chartView.xAxisRenderingModel().setMinortickColor(Color.RED);
-		chartView.yAxisRenderingModel().setMinortickColor(Color.RED);
-		chartView.xAxisModel().setLabel("xLabel");
-		chartView.chartModel().setHoriziontalGridLineVisible(true);
-		chartView.chartModel().setVerticalGridLineVisible(true);
-		chartView.chartRenderingModel().setMargin(Side.Left, 100);
-		//getContentPane().add(chartView, BorderLayout.CENTER);
-		chartView.setSize(new Dimension(1000,500));
-		chartView.setController(new DefaultChartController());
-	
-		return chartView;
-	}
-	
-	public ChartView buildChart(Entry entry, Config config)
-	{
-		return null;
-	}
-
-	@Override
-	public ChartView buildChart(JFrame frame) {
-		
-		ChartView chartView = new LineChartView(new AxisModel(0,30,1), new AxisModel("yLabel",  -1000,1000,500));
-		chartView.xAxisModel().setMinorTickVisible(true);
-		chartView.yAxisModel().setMinorTickVisible(true);
-		chartView.xAxisRenderingModel().setMinortickColor(Color.RED);
-		chartView.yAxisRenderingModel().setMinortickColor(Color.RED);
-		chartView.xAxisModel().setLabel("xLabel");
-		chartView.chartModel().setHoriziontalGridLineVisible(true);
-		chartView.chartModel().setVerticalGridLineVisible(true);
-		chartView.chartRenderingModel().setMargin(Side.Left, 100);
-		frame.getContentPane().add(chartView, BorderLayout.CENTER);
-		chartView.setSize(new Dimension(1000,500));
-		chartView.setController(new DefaultChartController());
-	
-		return chartView;
-	}
 
 	@Override
 	public ChartView buildChart(JFrame frame, Config config) {

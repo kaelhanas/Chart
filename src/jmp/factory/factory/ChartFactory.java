@@ -10,14 +10,7 @@ import jmp.entry.entry.Entry;
 
 public abstract class ChartFactory{
 
-	public abstract ChartView buildChart();
-	public abstract ChartView buildChart(JFrame frame);
 	public abstract ChartView buildChart(JFrame frame, Config config);
 	
-	/*public ChartView getChartView(String chartViewType, JFrame frame)
-	{
-		LineChartFactory f = new LineChartFactory();
-		return (LineChartView)f.buildChart(frame);
-	}*/
 	
 }
