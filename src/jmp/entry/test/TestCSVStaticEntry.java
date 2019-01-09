@@ -62,10 +62,6 @@ public class TestCSVStaticEntry extends JFrame {
 					Config config = new LineChartConfig(path);
 					LineChartView chartView = (LineChartView) factory.buildChart(app, config);
 
-					
-					// Data section
-					//app.init(chartView);
-					
 					CSVStaticEntry entry = new CSVStaticEntry(Constants.csvPath2, chartView);
 					entry.init();
 					

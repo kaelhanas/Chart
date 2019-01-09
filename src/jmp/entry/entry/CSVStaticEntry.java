@@ -69,6 +69,7 @@ public class CSVStaticEntry extends StaticEntry {
 			
 			System.out.println("\n");*/
 			if (xIndex >= fields.length || yIndex >= fields.length) {
+				br.close();
 				throw new IndexOutOfBoundsException();
 			}
 			

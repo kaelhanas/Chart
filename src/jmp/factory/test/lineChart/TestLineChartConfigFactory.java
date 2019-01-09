@@ -104,18 +104,6 @@ public class TestLineChartConfigFactory extends JFrame {
 				}	
 			});
 
-			
-			/*
-			InfralCircularData chartData = new InfralCircularData(DATA_SIZE, sap);
-			((LineChartModel)this.chartView.chartModel()).setData(chartData);
-						
-			int sample=0;
-			for (Integer v : this.dataModel.data())
-			{
-				chartData.addY(v.doubleValue());
-				chartData.addX(sap.computeTime(sample++));
-			}
-			*/
 		}
 		catch (WavFileException ex)
 		{
