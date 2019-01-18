@@ -1,4 +1,4 @@
-package jmp.audio;
+package jmp.audio.test;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -12,6 +12,10 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.Mixer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import jmp.audio.AudioPlayer;
+import jmp.audio.AudioRecorder;
+import jmp.audio.AudioUtils;
 
 public class TestAudio extends JFrame
 {
@@ -50,6 +54,7 @@ public class TestAudio extends JFrame
 		this.getContentPane().add(this.recordButton);
 		this.getContentPane().add(this.stopButton);
 		this.getContentPane().add(this.playButton);
+		
 	}
 
 	private void setupActions()
@@ -63,6 +68,7 @@ public class TestAudio extends JFrame
 			{
 				try
 				{
+					System.out.println("*****Record button pressed");
 					recorder.setup(TestAudio.getAudioFormat());
 					recorder.startRecording();
 				}
@@ -74,6 +80,7 @@ public class TestAudio extends JFrame
 
 				recordButton.setEnabled(false);
 				playButton.setEnabled(false);
+				stopButton.setEnabled(true);
 
 				Runnable rAction = new Runnable()
 				{
@@ -81,8 +88,8 @@ public class TestAudio extends JFrame
 					public void run()
 					{
 						recorder.records();
-						recordButton.setEnabled(true);
-						playButton.setEnabled(true);
+						//recordButton.setEnabled(true);
+						//playButton.setEnabled(true);
 					}
 				};
 				new Thread(rAction).start();
@@ -94,10 +101,24 @@ public class TestAudio extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				recordButton.setEnabled(true);
+				System.out.println("*****Stop button pressed");
+				//recordButton.setEnabled(true);
 				playButton.setEnabled(true);
+				
+				if(recorder.isRecording()){
+					recorder.stopRecording();
+				}
+				
+				else {
+					player.stop(); try {
+					Thread.currentThread().sleep(1000);
+					player.reset();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}}
 
-				recorder.stopRecording();
+
 			}
 		});
 
@@ -109,6 +130,7 @@ public class TestAudio extends JFrame
 			{
 				try
 				{
+					System.out.println("*****Play button pressed");
 					AudioFormat af = TestAudio.getAudioFormat();
 					//player.setup(recorder.dataToRecord(), af);
 
@@ -129,7 +151,6 @@ public class TestAudio extends JFrame
 					public void run()
 					{
 						player.play();
-						recordButton.setEnabled(true);
 						playButton.setEnabled(true);
 					}
 				};

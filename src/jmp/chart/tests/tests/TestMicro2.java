@@ -23,10 +23,10 @@ import javax.swing.Timer;
 
 import jmp.audio.AudioPlayer;
 import jmp.audio.AudioUtils;
-import jmp.audio.TestAudio;
 import jmp.audio.audioRecorder.MicroRecorder;
 import jmp.audio.audioRecorder.Recorder;
 import jmp.audio.audioRecorder.RecorderListener;
+import jmp.audio.test.TestAudio;
 import jmp.chart.Default;
 import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.map.MapSampledCircularData;

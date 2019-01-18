@@ -11,42 +11,36 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class AudioPlayer
-{
+public class AudioPlayer {
 	private AudioFormat audioFormat;
 	private AudioInputStream audioInputStream;
 	private SourceDataLine sourceDataLine;
 	private byte playingBuffer[] = new byte[10000];
+	private boolean stop = false;
 
-	public AudioPlayer()
-	{
+	public AudioPlayer() {
 		this.playingBuffer = new byte[10000];
 	}
 
-	public void setup(byte dataToPlay[], AudioFormat audioFormat) throws LineUnavailableException
-	{
+	public void setup(byte dataToPlay[], AudioFormat audioFormat) throws LineUnavailableException {
 		this.audioFormat = audioFormat;
 		InputStream byteArrayInputStream = new ByteArrayInputStream(dataToPlay);
-		this.audioInputStream = new AudioInputStream(byteArrayInputStream, audioFormat, dataToPlay.length / audioFormat.getFrameSize());
+		this.audioInputStream = new AudioInputStream(byteArrayInputStream, audioFormat,
+				dataToPlay.length / audioFormat.getFrameSize());
 		DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, audioFormat);
 		this.sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
 	}
 
-	public void play()
-	{
-		try
-		{
+	public void play() {
+		try {
 			sourceDataLine.open(audioFormat);
 			sourceDataLine.start();
 			int cnt;
 			// Keep looping until the input read method
 			// returns -1 for empty stream.
-			try
-			{
-				while ((cnt = audioInputStream.read(this.playingBuffer, 0, this.playingBuffer.length)) != -1)
-				{
-					if (cnt > 0)
-					{
+			try {
+				while ((cnt = audioInputStream.read(this.playingBuffer, 0, this.playingBuffer.length)) != -1 && !stop) {
+					if (cnt > 0) {
 						// Write data to the internal buffer of
 						// the data line where it will be
 						// delivered to the speaker.
@@ -55,19 +49,22 @@ public class AudioPlayer
 				}
 				// Block and wait for internal buffer of the data line to empty.
 				sourceDataLine.drain();
-			}
-			catch (IOException e)
-			{
+			} catch (IOException e) {
 				e.printStackTrace();
-			}
-			finally
-			{
+			} finally {
 				sourceDataLine.close();
 			}
-		}
-		catch (LineUnavailableException e1)
-		{
+		} catch (LineUnavailableException e1) {
 			e1.printStackTrace();
 		}
 	}
+
+	public void stop() {
+		stop = true;
+	}
+
+	public void reset() {
+		stop = false;
+	}
+
 }
