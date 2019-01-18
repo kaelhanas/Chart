@@ -9,12 +9,16 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import jmp.audio.audioRecorder.Recorder;
+import jmp.audio.audioRecorder.RecorderListener;
+import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.Default;
 import jmp.chart.data.xy.DefaultSampleDataXY;
 import jmp.chart.data.xy.XYSampledCircularData;
-import jmp.chart.model.DefaultAutoScaleStrategy;
-import jmp.chart.model.LineChartModel;
-import jmp.chart.model.Side;
+import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
+import jmp.chart.model.chartModel.LineChartModel;
+import jmp.chart.model.chartModel.Side;
+import jmp.chart.model.models.DataModel;
 import jmp.chart.view.ChartView;
 import jmp.chart.view.LineChartView;
 import jmp.config.config.Config;
@@ -23,12 +27,8 @@ import jmp.entry.entry.CSVStaticEntry;
 import jmp.entry.entry.StaticEntry;
 import jmp.factory.factory.ChartFactory;
 import jmp.factory.factory.LineChartFactory;
-import jmp.infral.Constants;
-import jmp.infral.SoundAcquisitionParams;
-import jmp.infral.audioRecorder.Recorder;
-import jmp.infral.audioRecorder.RecorderListener;
-import jmp.infral.audioRecorder.RecorderSimulator;
-import jmp.infral.models.DataModel;
+import jmp.utils.Constants;
+import jmp.utils.SoundAcquisitionParams;
 import wave.WavFileException;
 
 public class TestCSVStaticEntry extends JFrame {

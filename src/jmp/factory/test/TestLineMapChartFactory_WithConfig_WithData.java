@@ -11,14 +11,19 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import jmp.audio.audioRecorder.Recorder;
+import jmp.audio.audioRecorder.RecorderListener;
+import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.Default;
 import jmp.chart.data.map.MapSampledCircularData;
 import jmp.chart.data.xy.DefaultSampleDataMap;
 import jmp.chart.data.xy.DefaultSampleDataXY;
 import jmp.chart.data.xy.XYSampledCircularData;
-import jmp.chart.model.DefaultAutoScaleStrategy;
-import jmp.chart.model.LineChartModel;
-import jmp.chart.model.MapChartModel;
+import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
+import jmp.chart.model.chartModel.LineChartModel;
+import jmp.chart.model.chartModel.MapChartModel;
+import jmp.chart.model.models.DataModel;
+import jmp.chart.model.models.SpectrumModel;
 import jmp.chart.view.LineChartView;
 import jmp.chart.view.MapChartView;
 import jmp.config.config.Config;
@@ -27,13 +32,8 @@ import jmp.config.config.MapChartConfig;
 import jmp.factory.factory.ChartFactory;
 import jmp.factory.factory.LineChartFactory;
 import jmp.factory.factory.MapChartFactory;
-import jmp.infral.Constants;
-import jmp.infral.SoundAcquisitionParams;
-import jmp.infral.audioRecorder.Recorder;
-import jmp.infral.audioRecorder.RecorderListener;
-import jmp.infral.audioRecorder.RecorderSimulator;
-import jmp.infral.models.DataModel;
-import jmp.infral.models.SpectrumModel;
+import jmp.utils.Constants;
+import jmp.utils.SoundAcquisitionParams;
 import wave.WavFileException;
 
 public class TestLineMapChartFactory_WithConfig_WithData extends JFrame {

@@ -4,10 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.CursorModel;
-import jmp.chart.model.CursorsModel;
-import jmp.chart.model.CursorsRenderingModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.CursorModel;
+import jmp.chart.model.chartModel.CursorsModel;
+import jmp.chart.model.chartModel.CursorsRenderingModel;
 
 public class CursorsRenderer
 {

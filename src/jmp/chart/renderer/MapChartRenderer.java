@@ -10,11 +10,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jmp.chart.data.map.MapData;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.ChartModel;
-import jmp.chart.model.ChartRenderingModel;
-import jmp.chart.model.MapChartModel;
-import jmp.chart.model.MapChartRenderingModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.ChartModel;
+import jmp.chart.model.chartModel.ChartRenderingModel;
+import jmp.chart.model.chartModel.MapChartModel;
+import jmp.chart.model.chartModel.MapChartRenderingModel;
 import jmp.ui.mvc.View;
 
 public class MapChartRenderer extends ChartRenderer

@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import jmp.chart.model.Side;
+import jmp.chart.model.chartModel.Side;
 import jmp.utils.MyColor;
 
 public class LineChartConfig extends Config{

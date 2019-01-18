@@ -1,6 +1,6 @@
 package jmp.chart.data.map;
 
-import jmp.infral.SoundAcquisitionParams;
+import jmp.utils.SoundAcquisitionParams;
 
 public class DefaultDataMap extends MapCircularData
 {

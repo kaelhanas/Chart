@@ -1,8 +1,8 @@
 package jmp.chart.view;
 
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.MapChartModel;
-import jmp.chart.model.MapChartRenderingModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.MapChartModel;
+import jmp.chart.model.chartModel.MapChartRenderingModel;
 import jmp.chart.renderer.MapChartRenderer;
 import jmp.ui.model.ModelComposit;
 import jmp.ui.mvc.Renderer;

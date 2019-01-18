@@ -1,7 +1,7 @@
 package jmp.chart.data.xy;
 
 import jmp.chart.data.map.MapSampledCircularData;
-import jmp.infral.SoundAcquisitionParams;
+import jmp.utils.SoundAcquisitionParams;
 
 public class DefaultSampleDataMap extends MapSampledCircularData
 {

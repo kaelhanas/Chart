@@ -8,9 +8,9 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import jmp.chart.Default;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.CursorModel;
-import jmp.chart.model.CursorRenderingModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.CursorModel;
+import jmp.chart.model.chartModel.CursorRenderingModel;
 import jmp.ui.utilities.JMSwingUtilities;
 
 public class CursorRenderer

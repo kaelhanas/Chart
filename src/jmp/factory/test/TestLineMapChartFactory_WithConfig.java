@@ -16,7 +16,7 @@ import jmp.config.config.MapChartConfig;
 import jmp.factory.factory.ChartFactory;
 import jmp.factory.factory.LineChartFactory;
 import jmp.factory.factory.MapChartFactory;
-import jmp.infral.Constants;
+import jmp.utils.Constants;
 
 public class TestLineMapChartFactory_WithConfig extends JFrame {
 

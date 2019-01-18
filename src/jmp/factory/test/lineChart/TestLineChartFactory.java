@@ -14,7 +14,7 @@ import jmp.config.config.Config;
 import jmp.config.config.LineChartConfig;
 import jmp.factory.factory.ChartFactory;
 import jmp.factory.factory.LineChartFactory;
-import jmp.infral.Constants;
+import jmp.utils.Constants;
 
 public class TestLineChartFactory extends JFrame {
 

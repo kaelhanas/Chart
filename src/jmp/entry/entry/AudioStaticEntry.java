@@ -3,15 +3,15 @@ package jmp.entry.entry;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import jmp.audio.audioRecorder.RecorderListener;
+import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.Default;
 import jmp.chart.data.xy.DefaultSampleDataXY;
 import jmp.chart.data.xy.XYSampledCircularData;
-import jmp.chart.model.DefaultAutoScaleStrategy;
+import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
+import jmp.chart.model.models.DataModel;
 import jmp.chart.view.ChartView;
-import jmp.infral.SoundAcquisitionParams;
-import jmp.infral.audioRecorder.RecorderListener;
-import jmp.infral.audioRecorder.RecorderSimulator;
-import jmp.infral.models.DataModel;
+import jmp.utils.SoundAcquisitionParams;
 import wave.WavFileException;
 
 public class AudioStaticEntry extends StaticEntry{

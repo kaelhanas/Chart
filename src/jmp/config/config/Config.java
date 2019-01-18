@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import jmp.chart.model.Side;
+import jmp.chart.model.chartModel.Side;
 
 public abstract class Config {
 

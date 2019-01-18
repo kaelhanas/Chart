@@ -1,15 +1,15 @@
 package jmp.chart.view;
 
-import jmp.chart.model.AutoScaleStrategy;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.AxisRenderingModel;
-import jmp.chart.model.ChartModel;
-import jmp.chart.model.ChartRenderingModel;
-import jmp.chart.model.CursorModel;
-import jmp.chart.model.CursorRenderingModel;
-import jmp.chart.model.CursorsModel;
-import jmp.chart.model.CursorsRenderingModel;
-import jmp.chart.model.Side;
+import jmp.chart.model.chartModel.AutoScaleStrategy;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.AxisRenderingModel;
+import jmp.chart.model.chartModel.ChartModel;
+import jmp.chart.model.chartModel.ChartRenderingModel;
+import jmp.chart.model.chartModel.CursorModel;
+import jmp.chart.model.chartModel.CursorRenderingModel;
+import jmp.chart.model.chartModel.CursorsModel;
+import jmp.chart.model.chartModel.CursorsRenderingModel;
+import jmp.chart.model.chartModel.Side;
 import jmp.chart.renderer.ChartRenderer;
 import jmp.ui.model.DefaultModelComposit;
 import jmp.ui.model.ModelComposit;

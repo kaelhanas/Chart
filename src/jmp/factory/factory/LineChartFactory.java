@@ -8,8 +8,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import jmp.chart.controller.DefaultChartController;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.Side;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.Side;
 import jmp.chart.view.ChartView;
 import jmp.chart.view.LineChartView;
 import jmp.config.config.Config;

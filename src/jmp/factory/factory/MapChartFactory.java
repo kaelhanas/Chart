@@ -7,8 +7,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import jmp.chart.controller.DefaultChartController;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.MapChartRenderingModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.MapChartRenderingModel;
 import jmp.chart.view.ChartView;
 import jmp.chart.view.MapChartView;
 import jmp.config.config.Config;

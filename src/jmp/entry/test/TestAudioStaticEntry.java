@@ -13,7 +13,7 @@ import jmp.entry.entry.AudioStaticEntry;
 import jmp.entry.entry.CSVStaticEntry;
 import jmp.factory.factory.ChartFactory;
 import jmp.factory.factory.LineChartFactory;
-import jmp.infral.Constants;
+import jmp.utils.Constants;
 
 public class TestAudioStaticEntry extends JFrame{
 

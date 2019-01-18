@@ -11,7 +11,7 @@ import java.util.Scanner;
 import jmp.chart.data.xy.DefaultVectorData;
 import jmp.chart.data.xy.XYData;
 import jmp.chart.data.xy.XYVectorData;
-import jmp.chart.model.DefaultAutoScaleStrategy;
+import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
 import jmp.chart.view.ChartView;
 
 public class CSVStaticEntry extends StaticEntry {

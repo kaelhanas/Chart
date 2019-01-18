@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jmp.chart.Default;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.AxisRenderingModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.AxisRenderingModel;
 import jmp.ui.utilities.JMSwingUtilities;
 
 public class AxisRenderer

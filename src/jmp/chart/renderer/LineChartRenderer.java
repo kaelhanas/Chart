@@ -5,11 +5,11 @@ import java.awt.Image;
 import java.awt.geom.Rectangle2D.Double;
 
 import jmp.chart.data.xy.XYData;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.ChartModel;
-import jmp.chart.model.ChartRenderingModel;
-import jmp.chart.model.LineChartModel;
-import jmp.chart.model.LineChartRenderingModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.ChartModel;
+import jmp.chart.model.chartModel.ChartRenderingModel;
+import jmp.chart.model.chartModel.LineChartModel;
+import jmp.chart.model.chartModel.LineChartRenderingModel;
 import jmp.ui.mvc.View;
 
 public class LineChartRenderer extends ChartRenderer

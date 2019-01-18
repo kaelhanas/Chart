@@ -1,6 +1,6 @@
 package jmp.chart.data.xy;
 
-import jmp.infral.SoundAcquisitionParams;
+import jmp.utils.SoundAcquisitionParams;
 
 public class DefaultSampleDataXY extends XYSampledCircularData
 {

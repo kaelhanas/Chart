@@ -6,10 +6,10 @@ import java.util.Iterator;
 
 import jmp.chart.Default;
 import jmp.chart.data.xy.XYData;
-import jmp.chart.model.AxisModel;
-import jmp.chart.model.CursorModel;
-import jmp.chart.model.CursorRenderingModel;
-import jmp.chart.model.CursorsModel;
+import jmp.chart.model.chartModel.AxisModel;
+import jmp.chart.model.chartModel.CursorModel;
+import jmp.chart.model.chartModel.CursorRenderingModel;
+import jmp.chart.model.chartModel.CursorsModel;
 import jmp.chart.renderer.ChartRenderer;
 import jmp.chart.view.ChartView;
 import jmp.ui.mvc.Controller;

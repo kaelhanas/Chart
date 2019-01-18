@@ -7,7 +7,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
-import jmp.chart.model.AxisModel;
+import jmp.chart.model.chartModel.AxisModel;
 import jmp.chart.view.LineChartView;
 
 public class TestChart extends JFrame
