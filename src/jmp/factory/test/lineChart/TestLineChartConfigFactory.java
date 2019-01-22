@@ -132,6 +132,7 @@ public class TestLineChartConfigFactory extends JFrame {
 					final String path = "D:\\Documents\\ENSISA\\3A_IR\\S1\\Projet_Perronne\\chart\\bin\\jmp\\config\\DefaultConfig.myConfig";
 					Config config = new LineChartConfig(path);
 					LineChartView chartView = (LineChartView) factory.buildChart(app, config);
+					System.out.print("Coucou");
 
 					
 					// Data section

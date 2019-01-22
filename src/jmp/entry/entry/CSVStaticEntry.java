@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import jmp.chart.data.xy.DefaultVectorData;
+import jmp.chart.data.xy.DefaultXYVectorData;
 import jmp.chart.data.xy.XYData;
 import jmp.chart.data.xy.XYVectorData;
 import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
@@ -46,7 +46,7 @@ public class CSVStaticEntry extends StaticEntry {
 		this.getChartView().autoScale(new DefaultAutoScaleStrategy(1), new DefaultAutoScaleStrategy(1));
 	}
 
-	private DefaultVectorData readCSV(String path, int xIndex, int yIndex)
+	private DefaultXYVectorData readCSV(String path, int xIndex, int yIndex)
 			throws IOException, FileNotFoundException, IndexOutOfBoundsException {
 
 		if (xIndex < 0 || yIndex < 0) {
@@ -102,10 +102,11 @@ public class CSVStaticEntry extends StaticEntry {
 
 		br.close();
 
-		XYVectorData data = new DefaultVectorData(xdatas.size(), yMin, yMax, xMin, xMax);
+		XYVectorData data = new DefaultXYVectorData(xdatas.size(), yMin, yMax, xMin, xMax);
 		for (int i = 0; i < xdatas.size(); i++) {
-			data.addX(xdatas.get(i));
-			data.addY(ydatas.get(i));
+			//data.addX(xdatas.get(i));
+			//data.addY(ydatas.get(i));
+			data.add(xdatas.get(i), ydatas.get(i));
 		}
 
 		//System.out.println(xdatas.toString() + "\n" + ydatas.toString());
@@ -113,7 +114,7 @@ public class CSVStaticEntry extends StaticEntry {
 		
 		setData(data); //Data setting in Entry class for an eventual public call
 		
-		return (DefaultVectorData) data;
+		return (DefaultXYVectorData) data;
 
 	}
 

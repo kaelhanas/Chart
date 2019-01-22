@@ -1,15 +1,15 @@
 package jmp.chart.data.xy;
 
-public class DefaultVectorData extends XYVectorData{
+public class DefaultXYVectorData extends XYVectorData{
 	
 	private double yMin, yMax, xMin, xMax;
 	
-	public DefaultVectorData()
+	public DefaultXYVectorData()
 	{
 		super();
 	}
 	
-	public DefaultVectorData(int size, double yMin, double yMax, double xMin, double xMax)
+	public DefaultXYVectorData(int size, double yMin, double yMax, double xMin, double xMax)
 	{
 		super(size);
 		this.yMax = yMax;

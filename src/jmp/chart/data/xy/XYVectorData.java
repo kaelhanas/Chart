@@ -63,7 +63,7 @@ public abstract class XYVectorData implements XYData{
 		return this.ydata;
 	}
 	
-	public void addX(double value) 
+	/*public void addX(double value) 
 	{
 		this.xdata.add(value);
 	}
@@ -72,6 +72,12 @@ public abstract class XYVectorData implements XYData{
 	public void addY(double value) 
 	{
 		this.ydata.add(value);
+	}*/
+	
+	public void add(double xvalue, double yvalue)
+	{
+		this.xdata.add(xvalue);
+		this.ydata.add(yvalue);
 	}
 	
 	

@@ -17,9 +17,10 @@ public class MapChartConfig extends Config{
 	
 	public MapChartConfig(String configFilePath) throws IOException {
 		super(configFilePath);
-		readConfig(configFilePath);
 		this.chartHeight = 0;
 		this.chartWidth = 0;
+		readConfig(configFilePath);
+
 	}
 
 	@Override

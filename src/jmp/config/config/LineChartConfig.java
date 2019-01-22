@@ -19,9 +19,10 @@ public class LineChartConfig extends Config{
 	public LineChartConfig(String configFilePath) throws IOException
 	{
 		super(configFilePath);
-		readConfig(configFilePath);
 		this.chartHeight = 0;
 		this.chartWidth = 0;
+		readConfig(configFilePath);
+
 	}
 
 	@Override
