@@ -129,6 +129,9 @@ public abstract class Config {
 		VIEW_SIZE = vIEW_SIZE;
 	}
 	
+	public abstract ConfigType getConfigType();
+
+	
 	public String toString()
 	{
 		return "[X_AXIS_MINORTICK_VISIBLE::" +this.xAxisMinorTickVisible()+

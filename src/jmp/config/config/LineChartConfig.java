@@ -62,7 +62,8 @@ public class LineChartConfig extends Config{
 
 	private void dataTypeAnalysis(String dataType, String data) throws IllegalArgumentException{
 		
-		//System.out.println("I'm in "+dataType+" Sir");
+		//	TO-DO creer une méthode identique dans la classe Config et appelé le super(dataType, date) ce ce dernier
+		//	et ainsi lui passer tous les cas du switch case communs aux LineChart et aux MapChart 
 		switch(dataType){
 		
 			case "X_AXIS_MINORTICK_VISIBLE" : 
