@@ -21,11 +21,13 @@ public abstract class Config {
 
 	private Color X_AXIS_MINORTICK_COLOR;
 	private Color Y_AXIS_MINORTICK_COLOR;
+	private Color BACK_GROUND_COLOR;
 
 	private String X_AXIS_LABEL;
 	private String Y_AXIS_LABEL;
 
 	private Dimension VIEW_SIZE;
+	
 
 	public Config(String configFilePath) 
 	{
@@ -129,9 +131,15 @@ public abstract class Config {
 		VIEW_SIZE = vIEW_SIZE;
 	}
 	
-	public abstract ConfigType getConfigType();
-
 	
+	public Color getBACK_GROUND_COLOR() {
+		return BACK_GROUND_COLOR;
+	}
+
+	public void setBACK_GROUND_COLOR(Color bACK_GROUND_COLOR) {
+		BACK_GROUND_COLOR = bACK_GROUND_COLOR;
+	}
+
 	public String toString()
 	{
 		return "[X_AXIS_MINORTICK_VISIBLE::" +this.xAxisMinorTickVisible()+

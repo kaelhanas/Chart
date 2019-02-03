@@ -46,5 +46,4 @@ public class Default
 	public static final BasicStroke CURSOR_LINE_STROKE = new  BasicStroke(0.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER, 10, pattern, 0);
 	public static final Color CURSOR_LINE_COLOR = Color.WHITE;
 	public static final int CURSOR_SIZE = 5;
-
 }

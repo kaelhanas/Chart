@@ -14,11 +14,16 @@ public class MapChartConfig extends Config{
 	private int chartHeight;
 	private int chartWidth;
 	
+	private int SPECTRUM_STEP;
+	private int SPECTRUM_SIZE;
+	
 	
 	public MapChartConfig(String configFilePath) throws IOException {
 		super(configFilePath);
 		this.chartHeight = 0;
 		this.chartWidth = 0;
+		this.SPECTRUM_SIZE = 1024;
+		this.SPECTRUM_STEP = 100;
 		readConfig(configFilePath);
 
 	}
@@ -117,20 +122,16 @@ public class MapChartConfig extends Config{
 						this.setY_AXIS_MINORTICK_COLOR(yColor.getColor(data)); break;
 						
 					//Map configuration
-					case "DATA_SIZE" :
-						break;
-					case "SPECTRUM_SIZE" :
-						break;
-					case "SPECTRUM_STEP" :
-						break;
 					case "BACKGROUND_COLOR" :
-							break;
+						MyColor backColor = new MyColor();
+						this.setBACK_GROUND_COLOR(backColor.getColor(data));break;
 						
 					//Allow to inform the user that his config file contains an error
 					default : throw new IllegalArgumentException();
 	
 				}
 	}
+
 
 	@Override
 	public ConfigType getConfigType() {

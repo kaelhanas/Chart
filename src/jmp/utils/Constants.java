@@ -29,6 +29,7 @@ public class Constants {
     
     public static final String csvPath = "D:\\Documents\\ENSISA\\3A_IR\\S1\\Projet_Perronne\\chart\\csv\\CSV_test.csv";
     public static final String csvPath2 = "D:\\Documents\\ENSISA\\3A_IR\\S1\\Projet_Perronne\\chart\\csv\\test2.csv";
-    public static final String path = "D:\\\\Documents\\\\ENSISA\\\\3A_IR\\\\S1\\\\Projet_Perronne\\\\chart\\\\songs\\\\ALB.wav";
-    public static final String configFilePath = "D:\\Documents\\ENSISA\\3A_IR\\S1\\Projet_Perronne\\chart\\bin\\jmp\\config\\DefaultConfig.myConfig";
+    public static final String AudioFilepath = "D:\\\\Documents\\\\ENSISA\\\\3A_IR\\\\S1\\\\Projet_Perronne\\\\chart\\\\songs\\\\ALB.wav";
+    public static final String configLineFilePath = "D:\\Documents\\ENSISA\\3A_IR\\S1\\Projet_Perronne\\chart\\bin\\jmp\\config\\DefaultLineChartConfig.myConfig";
+    public static final String configMapfilePath = "D:\\Documents\\ENSISA\\3A_IR\\S1\\Projet_Perronne\\chart\\bin\\jmp\\config\\DefaultMapChartConfig.myConfig";
 }

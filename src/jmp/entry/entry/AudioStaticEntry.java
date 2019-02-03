@@ -1,16 +1,26 @@
 package jmp.entry.entry;
 
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import jmp.audio.audioRecorder.RecorderListener;
 import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.Default;
+import jmp.chart.data.map.MapSampledCircularData;
+import jmp.chart.data.xy.DefaultSampleDataMap;
 import jmp.chart.data.xy.DefaultSampleDataXY;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
+import jmp.chart.model.chartModel.MapChartModel;
+import jmp.chart.model.chartModel.MapChartRenderingModel;
 import jmp.chart.model.models.DataModel;
+import jmp.chart.model.models.SpectrumModel;
 import jmp.chart.view.ChartView;
+import jmp.chart.view.LineChartView;
+import jmp.chart.view.MapChartView;
+import jmp.config.config.Config;
+import jmp.config.config.MapChartConfig;
 import jmp.utils.SoundAcquisitionParams;
 import wave.WavFileException;
 
@@ -18,27 +28,36 @@ public class AudioStaticEntry extends StaticEntry{
 
 	private int dataSize;
 	private double SAP_SampleRate;
+	private int Spectrum_Size;
+	private int Spectrum_Step;
 	
-	public AudioStaticEntry(String filePath, ChartView chartView, int dataSize, double SAP_SampleRate) {
-		super(filePath, chartView);
-		this.dataSize = dataSize;
-		this.SAP_SampleRate = SAP_SampleRate;
-	}
 	
-	public AudioStaticEntry(String filePath, ChartView chartView)
-	{
-		super(filePath, chartView);
+	public AudioStaticEntry(String filePath) {
+		super(filePath);
 		this.dataSize = 300000;
 		this.SAP_SampleRate = 8000;
+		this.Spectrum_Size = 1024;
+		this.Spectrum_Step = 100;
+	}
+	
+	public AudioStaticEntry(String filePath, double SAP_sampleRate, int dataSize, int spectrumSize, int spectrumStep) {
+		super(filePath);
+		this.dataSize = dataSize;
+		this.SAP_SampleRate = SAP_sampleRate;
+		this.Spectrum_Size = spectrumSize;
+		this.Spectrum_Step = spectrumStep;
 	}
 
 	
-	public void init()
+	public void insertTo(ChartView chartView)
 	{
 		try
 		{
 			RecorderSimulator recorder = new RecorderSimulator(getPath());
 			final DataModel dataModel = new DataModel(dataSize);
+			
+			SpectrumModel spectrumModel = new SpectrumModel(dataSize/Spectrum_Step, Spectrum_Size, Spectrum_Step);
+			dataModel.addDataChangedListener(spectrumModel);
 			
 			recorder.addAppendRecorderListener(new RecorderListener() {
 				
@@ -65,36 +84,57 @@ public class AudioStaticEntry extends StaticEntry{
 			
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(SAP_SampleRate);
 			
-			XYSampledCircularData chartData = new DefaultSampleDataXY(dataSize, sap);
-			getChartView().chartModel().setData(chartData);
-			
-			int count =0;
-			for (Integer v : dataModel.data())
-			{
-				chartData.add(v.doubleValue());
-				count+=1;
-			}
-			System.out.print(count);
-			
-			getChartView().autoScaleX(new DefaultAutoScaleStrategy(100));
-		
-			
-			getChartView().autoScaleY(new DefaultAutoScaleStrategy(0.1)
-			{
-				@Override
-				public void process(double lowerBound, double upperBound)
+			//LineChart
+			if (chartView instanceof LineChartView) {
+				final XYSampledCircularData LineChartData;
+				LineChartData = new DefaultSampleDataXY(dataSize, sap);
+				chartView.chartModel().setData(LineChartData);
+				
+
+				for (Integer v : dataModel.data())
 				{
-					super.process(lowerBound, upperBound);
-					double min = Math.abs(this.lowerBound);
-					double max = this.upperBound;
-					double limit = (min>max)? min : max;
-					this.lowerBound = -limit;
-					this.upperBound = +limit;
-					this.tickUnit = (this.upperBound-this.lowerBound)/Default.DEFAULT_TICK_RATIO;
-				}	
-			});
+					LineChartData.add(v.doubleValue());
+				}
+				
+				chartView.autoScaleX(new DefaultAutoScaleStrategy(100));
+				
+				
+				chartView.autoScaleY(new DefaultAutoScaleStrategy(0.1)
+				{
+					@Override
+					public void process(double lowerBound, double upperBound)
+					{
+						super.process(lowerBound, upperBound);
+						double min = Math.abs(this.lowerBound);
+						double max = this.upperBound;
+						double limit = (min>max)? min : max;
+						this.lowerBound = -limit;
+						this.upperBound = +limit;
+						this.tickUnit = (this.upperBound-this.lowerBound)/Default.DEFAULT_TICK_RATIO;
+					}	
+				});
+				
+			}
 			
-			setData(chartData);
+			//MapChart
+			else if (chartView instanceof MapChartView)
+			{
+				final MapSampledCircularData mapChartData = new DefaultSampleDataMap(dataSize, sap, Spectrum_Step);
+				((MapChartModel)chartView.chartModel()).setData(mapChartData);
+				
+				for (double[] v : spectrumModel.data())
+				{
+					mapChartData.add(v);
+				}
+				
+				chartView.autoScaleX(new DefaultAutoScaleStrategy(0.1));
+				chartView.autoScaleY(new DefaultAutoScaleStrategy(1));
+
+			}
+			
+			else {throw new IllegalArgumentException();}
+			
+			
 			
 		}
 		

@@ -2,10 +2,14 @@ package jmp.entry.entry;
 
 import jmp.chart.view.ChartView;
 
-public class DynamicEntry extends Entry{
+public class DynamicEntry implements Entry{
 
-	public DynamicEntry(ChartView chartView) {
-		super(chartView);
+	@Override
+	public void insertTo(ChartView chartView) {
+		// TODO Auto-generated method stub
+		
 	}
+
+
 
 }

@@ -19,34 +19,33 @@ public class CSVStaticEntry extends StaticEntry {
 	private int xIndex, yIndex;
 	private XYVectorData data;
 
-	public CSVStaticEntry(String filePath, ChartView chartView) {
-		super(filePath, chartView);
+	public CSVStaticEntry(String filePath) {
+		super(filePath);
 		xIndex = 0;
 		yIndex = 1;
-		
+
 	}
 
-	public CSVStaticEntry(String filePath, ChartView chartView, int xIndex, int yIndex) {
-		super(filePath, chartView);
+	public CSVStaticEntry(String filePath, int xIndex, int yIndex) {
+		super(filePath);
 		this.xIndex = xIndex;
 		this.yIndex = yIndex;
 
 	}
 
-	public void init()
-	{
-		
+	public void insertTo(ChartView chartView) {
+
 		try {
-			data = readCSV(this.getPath(), xIndex, yIndex);
+			data = readCSV(this.getPath(),chartView, xIndex, yIndex);
 		} catch (IndexOutOfBoundsException | IOException e) {
 			e.printStackTrace();
 		}
-		
-		this.getChartView().chartModel().setData(data);
-		this.getChartView().autoScale(new DefaultAutoScaleStrategy(1), new DefaultAutoScaleStrategy(1));
+
+		chartView.chartModel().setData(data);
+		chartView.autoScale(new DefaultAutoScaleStrategy(1), new DefaultAutoScaleStrategy(1));
 	}
 
-	private DefaultXYVectorData readCSV(String path, int xIndex, int yIndex)
+	private DefaultXYVectorData readCSV(String path, ChartView chartView, int xIndex, int yIndex)
 			throws IOException, FileNotFoundException, IndexOutOfBoundsException {
 
 		if (xIndex < 0 || yIndex < 0) {
@@ -63,19 +62,19 @@ public class CSVStaticEntry extends StaticEntry {
 
 		while ((line = br.readLine()) != null && !line.isEmpty()) {
 			String[] fields = line.split(",");
-			/*for (String s : fields) {
-				System.out.print(s + ", ");
-			}
-			
-			System.out.println("\n");*/
+			/*
+			 * for (String s : fields) { System.out.print(s + ", "); }
+			 * 
+			 * System.out.println("\n");
+			 */
 			if (xIndex >= fields.length || yIndex >= fields.length) {
 				br.close();
 				throw new IndexOutOfBoundsException();
 			}
-			
+
 			if (!labelCheck && hasLabel(path)) {
-				this.getChartView().xAxisModel().setLabel(fields[xIndex]);
-				this.getChartView().yAxisModel().setLabel(fields[yIndex]);
+				chartView.xAxisModel().setLabel(fields[xIndex]);
+				chartView.yAxisModel().setLabel(fields[yIndex]);
 				labelCheck = true;
 			}
 
@@ -104,16 +103,12 @@ public class CSVStaticEntry extends StaticEntry {
 
 		XYVectorData data = new DefaultXYVectorData(xdatas.size(), yMin, yMax, xMin, xMax);
 		for (int i = 0; i < xdatas.size(); i++) {
-			//data.addX(xdatas.get(i));
-			//data.addY(ydatas.get(i));
+			// data.addX(xdatas.get(i));
+			// data.addY(ydatas.get(i));
 			data.add(xdatas.get(i), ydatas.get(i));
 		}
 
-		//System.out.println(xdatas.toString() + "\n" + ydatas.toString());
 
-		
-		setData(data); //Data setting in Entry class for an eventual public call
-		
 		return (DefaultXYVectorData) data;
 
 	}
@@ -135,16 +130,6 @@ public class CSVStaticEntry extends StaticEntry {
 		scanner.close();
 		reader.close();
 		return hasLabel;
-	}
-
-	
-	public static void main(String[] args) throws FileNotFoundException, IndexOutOfBoundsException, IOException {
-
-		/*LineChartView chartView = new LineChartView(new AxisModel(0, 30, 1), new AxisModel("yLabel", -4000, 4000, 500));
-		readCSV(Constants.csvPath, 0, 1, chartView);
-		System.out.println(
-				"xlabel::" + chartView.xAxisModel().getLabel() + "\nylabel::" + chartView.yAxisModel().getLabel());*/
-
 	}
 
 }

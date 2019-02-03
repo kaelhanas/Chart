@@ -120,12 +120,6 @@ public class LineChartConfig extends Config{
 				this.setY_AXIS_MINORTICK_COLOR(yColor.getColor(data)); break;
 				
 			//Map configuration, ignored here
-			case "DATA_SIZE" :
-				break;
-			case "SPECTRUM_SIZE" :
-				break;
-			case "SPECTRUM_STEP" :
-				break;
 			case "BACKGROUND_COLOR" :
 					break;
 				

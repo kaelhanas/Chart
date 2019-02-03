@@ -7,7 +7,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
 
 import jmp.audio.AudioUtils;
-import jmp.audio.test.TestAudio;
+import tests.original_test.TestAudio;
 
 public class MicroRecorder extends Recorder
 {
