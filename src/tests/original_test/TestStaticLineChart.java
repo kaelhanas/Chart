@@ -14,7 +14,7 @@ import jmp.audio.audioRecorder.RecorderListener;
 import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.Default;
 import jmp.chart.controller.DefaultChartController;
-import jmp.chart.data.xy.DefaultSampleDataXY;
+import jmp.chart.data.xy.DefaultXYSampledData;
 import jmp.chart.data.xy.XYCircularData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.chartModel.AutoScaleStrategy;
@@ -114,7 +114,7 @@ public class TestStaticLineChart extends JFrame
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(8000);
 			
 			
-			XYSampledCircularData chartData = new DefaultSampleDataXY(DATA_SIZE, sap);
+			XYSampledCircularData chartData = new DefaultXYSampledData(DATA_SIZE, sap);
 			((LineChartModel)this.chartView.chartModel()).setData(chartData);
 						
 			int count =0;

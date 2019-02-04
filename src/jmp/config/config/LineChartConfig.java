@@ -119,9 +119,9 @@ public class LineChartConfig extends Config{
 				//System.out.println(yColor.getColor(data));
 				this.setY_AXIS_MINORTICK_COLOR(yColor.getColor(data)); break;
 				
-			//Map configuration, ignored here
 			case "BACKGROUND_COLOR" :
-					break;
+				MyColor backColor = new MyColor();
+				this.setBACK_GROUND_COLOR(backColor.getColor(data));break;
 				
 			//Allow to inform the user that his config file contains an error
 			default : throw new IllegalArgumentException();

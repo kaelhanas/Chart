@@ -8,8 +8,8 @@ import jmp.audio.audioRecorder.RecorderListener;
 import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.Default;
 import jmp.chart.data.map.MapSampledCircularData;
-import jmp.chart.data.xy.DefaultSampleDataMap;
-import jmp.chart.data.xy.DefaultSampleDataXY;
+import jmp.chart.data.xy.DefaultMapSampleData;
+import jmp.chart.data.xy.DefaultXYSampledData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
 import jmp.chart.model.chartModel.MapChartModel;
@@ -87,7 +87,7 @@ public class AudioStaticEntry extends StaticEntry{
 			//LineChart
 			if (chartView instanceof LineChartView) {
 				final XYSampledCircularData LineChartData;
-				LineChartData = new DefaultSampleDataXY(dataSize, sap);
+				LineChartData = new DefaultXYSampledData(dataSize, sap);
 				chartView.chartModel().setData(LineChartData);
 				
 
@@ -119,7 +119,7 @@ public class AudioStaticEntry extends StaticEntry{
 			//MapChart
 			else if (chartView instanceof MapChartView)
 			{
-				final MapSampledCircularData mapChartData = new DefaultSampleDataMap(dataSize, sap, Spectrum_Step);
+				final MapSampledCircularData mapChartData = new DefaultMapSampleData(dataSize, sap, Spectrum_Step);
 				((MapChartModel)chartView.chartModel()).setData(mapChartData);
 				
 				for (double[] v : spectrumModel.data())

@@ -11,8 +11,8 @@ import jmp.audio.audioRecorder.Recorder;
 import jmp.audio.audioRecorder.RecorderListener;
 import jmp.chart.Default;
 import jmp.chart.data.map.MapSampledCircularData;
-import jmp.chart.data.xy.DefaultSampleDataMap;
-import jmp.chart.data.xy.DefaultSampleDataXY;
+import jmp.chart.data.xy.DefaultMapSampleData;
+import jmp.chart.data.xy.DefaultXYSampledData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
 import jmp.chart.model.chartModel.LineChartModel;
@@ -105,7 +105,7 @@ public class MicroRecorderEntry extends DynamicEntry {
 
 			// LineChart
 			if (isLineChart = (chartView instanceof LineChartView)) {
-				final XYSampledCircularData lineChartData = new DefaultSampleDataXY(dataSize, sap);
+				final XYSampledCircularData lineChartData = new DefaultXYSampledData(dataSize, sap);
 				((LineChartModel) chartView.chartModel()).setData(lineChartData);
 
 				Timer swingTimer = new Timer(50, new ActionListener() {
@@ -131,7 +131,7 @@ public class MicroRecorderEntry extends DynamicEntry {
 
 			// MapChart
 			else if (isMapChart = (chartView instanceof MapChartView)) {
-				final MapSampledCircularData mapChartData = new DefaultSampleDataMap(dataSize, sap, Spectrum_Step);
+				final MapSampledCircularData mapChartData = new DefaultMapSampleData(dataSize, sap, Spectrum_Step);
 				((MapChartModel) chartView.chartModel()).setData(mapChartData);
 
 				Timer swingTimer = new Timer(50, new ActionListener() {
@@ -225,11 +225,11 @@ public class MicroRecorderEntry extends DynamicEntry {
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(SAP_SampleRate);
 
 			// LineChart
-			final XYSampledCircularData lineChartData = new DefaultSampleDataXY(dataSize, sap);
+			final XYSampledCircularData lineChartData = new DefaultXYSampledData(dataSize, sap);
 			((LineChartModel) lineChartView.chartModel()).setData(lineChartData);
 
 			//MapChart
-			final MapSampledCircularData mapChartData = new DefaultSampleDataMap(dataSize, sap, Spectrum_Step);
+			final MapSampledCircularData mapChartData = new DefaultMapSampleData(dataSize, sap, Spectrum_Step);
 			((MapChartModel) mapChartView.chartModel()).setData(mapChartData);
 			
 			Timer swingTimer = new Timer(50, new ActionListener() {

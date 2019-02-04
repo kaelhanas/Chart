@@ -29,8 +29,8 @@ import jmp.audio.audioRecorder.RecorderListener;
 import jmp.chart.Default;
 import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.map.MapSampledCircularData;
-import jmp.chart.data.xy.DefaultSampleDataMap;
-import jmp.chart.data.xy.DefaultSampleDataXY;
+import jmp.chart.data.xy.DefaultMapSampleData;
+import jmp.chart.data.xy.DefaultXYSampledData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.chartModel.AxisModel;
 import jmp.chart.model.chartModel.LineChartModel;
@@ -324,11 +324,11 @@ public class TestMicro2 extends JFrame
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(8000);
 
 			//Line chart View data
-			final XYSampledCircularData lineChartData = new DefaultSampleDataXY(DATA_SIZE, sap);
+			final XYSampledCircularData lineChartData = new DefaultXYSampledData(DATA_SIZE, sap);
 			((LineChartModel) this.lineChartView.chartModel()).setData(lineChartData);
 
 			//Map chart View data
-			final MapSampledCircularData mapChartData = new DefaultSampleDataMap(DATA_SIZE, sap,SPECTRUM_STEP);
+			final MapSampledCircularData mapChartData = new DefaultMapSampleData(DATA_SIZE, sap,SPECTRUM_STEP);
 			((MapChartModel)this.mapChartView.chartModel()).setData(mapChartData);
 
 			Timer swingTimer = new Timer(50, new ActionListener() {

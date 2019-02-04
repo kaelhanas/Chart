@@ -14,7 +14,7 @@ import jmp.audio.audioRecorder.RecorderListener;
 import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.controller.DefaultChartController;
 import jmp.chart.data.map.MapSampledCircularData;
-import jmp.chart.data.xy.DefaultSampleDataMap;
+import jmp.chart.data.xy.DefaultMapSampleData;
 import jmp.chart.model.chartModel.AxisModel;
 import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
 import jmp.chart.model.chartModel.MapChartModel;
@@ -128,7 +128,7 @@ public class TestMapChart extends JFrame
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(8000);
 			
 			
-			MapSampledCircularData chartData = new DefaultSampleDataMap(DATA_SIZE, sap,SPECTRUM_STEP);
+			MapSampledCircularData chartData = new DefaultMapSampleData(DATA_SIZE, sap,SPECTRUM_STEP);
 			((MapChartModel)this.chartView.chartModel()).setData(chartData);
 			
 			

@@ -8,7 +8,7 @@ Y_AXIS_MINORTICK_VISIBLE = true
 HORIZONTAL_GRIDLINE_VISIBLE = true
 VERTICAL_GRIDLINE_VISIBLE = true
 
-// Choose between : Bottom,Left, Right and Top
+// Choose between : Bottom, Left, Right and Top
 
 MARGIN_SIDE = Left
 
@@ -29,9 +29,5 @@ Y_AXIS_LABEL = yLabel
 X_AXIS_MINORTICK_COLOR = red
 Y_AXIS_MINORTICK_COLOR = red
 
-//
-// Map : Spectrum configuration
-//
-
 //Color
-BACKGROUND_COLOR = black
+BACKGROUND_COLOR = grey

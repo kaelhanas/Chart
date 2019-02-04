@@ -20,7 +20,7 @@ import jmp.audio.audioRecorder.RecorderListener;
 import jmp.audio.audioRecorder.RecorderSimulator;
 import jmp.chart.Default;
 import jmp.chart.controller.DefaultChartController;
-import jmp.chart.data.xy.DefaultSampleDataXY;
+import jmp.chart.data.xy.DefaultXYSampledData;
 import jmp.chart.data.xy.XYSampledCircularData;
 import jmp.chart.model.chartModel.AxisModel;
 import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
@@ -121,7 +121,7 @@ public class TestDynamicLineChart extends JFrame
 	
 			SoundAcquisitionParams sap = new SoundAcquisitionParams(8000);
 			
-			final XYSampledCircularData chartData = new DefaultSampleDataXY(DATA_SIZE, sap);
+			final XYSampledCircularData chartData = new DefaultXYSampledData(DATA_SIZE, sap);
 			((LineChartModel)this.chartView.chartModel()).setData(chartData);
 				
 

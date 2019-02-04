@@ -121,7 +121,6 @@ public class MapChartConfig extends Config{
 						//System.out.println(yColor.getColor(data));
 						this.setY_AXIS_MINORTICK_COLOR(yColor.getColor(data)); break;
 						
-					//Map configuration
 					case "BACKGROUND_COLOR" :
 						MyColor backColor = new MyColor();
 						this.setBACK_GROUND_COLOR(backColor.getColor(data));break;
