@@ -152,5 +152,9 @@ public class AudioStaticEntry extends StaticEntry{
 		}
 	}
 	
+	public void insertTo(LineChartView lcv, MapChartView mcv) {
+		//Reproduire le code de la méthode insertTo(ChartView) en insertTo(LineChartView, MapChartView) en prenant exemple sur celle faite dans la classe "MicroRecorderEntry"
+	}
+	
 	
 }

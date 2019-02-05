@@ -8,7 +8,6 @@ public abstract class XYVectorData implements XYData{
 	private ArrayList<Double> ydata;
 	
 	
-	// Besoin pour ENTRY - Choix judicieux? idk
 	public XYVectorData()
 	{
 		this.xdata = new ArrayList<Double>();
@@ -62,17 +61,6 @@ public abstract class XYVectorData implements XYData{
 	{
 		return this.ydata;
 	}
-	
-	/*public void addX(double value) 
-	{
-		this.xdata.add(value);
-	}
-	
-	
-	public void addY(double value) 
-	{
-		this.ydata.add(value);
-	}*/
 	
 	public void add(double xvalue, double yvalue)
 	{

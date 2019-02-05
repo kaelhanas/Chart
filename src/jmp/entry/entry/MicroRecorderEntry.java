@@ -25,46 +25,35 @@ import jmp.chart.view.LineChartView;
 import jmp.chart.view.MapChartView;
 import jmp.utils.SoundAcquisitionParams;
 
-public class MicroRecorderEntry extends DynamicEntry {
+public class MicroRecorderEntry extends RecorderEntry {
 
-	private int dataSize;
-	private double SAP_SampleRate;
-	private int Spectrum_Size;
-	private int Spectrum_Step;
-
+	//Utilisé pour vérifier qu'une seule méthode d'insertion est utilisée par Entry
+	//Sinon problème au niveau des MicroRecorder
 	private boolean timerStarted;
 
 	public MicroRecorderEntry() {
-		this.dataSize = 300000;
-		this.SAP_SampleRate = 8000;
-		this.Spectrum_Size = 1024;
-		this.Spectrum_Step = 100;
+		super();
 		this.timerStarted = false;
 	}
 
 	public MicroRecorderEntry(double SAP_sampleRate, int dataSize, int spectrumSize, int spectrumStep) {
-		this.dataSize = dataSize;
-		this.SAP_SampleRate = SAP_sampleRate;
-		this.Spectrum_Size = spectrumSize;
-		this.Spectrum_Step = spectrumStep;
+		super(SAP_sampleRate, dataSize, spectrumSize, spectrumStep);
 		this.timerStarted = false;
 	}
 
 	public void insertTo(final ChartView chartView) {
 
 		try {
-			boolean isLineChart;
-			boolean isMapChart;
-
+		
 			Recorder recorder = new MicroRecorder();
-			final DataModel dataModel = new DataModel(dataSize);
+			final DataModel dataModel = new DataModel(getDataSize());
 
 			// LineChart
 			final DataProvider<Integer> lineDataProvider = new DataProvider<Integer>();
 			dataModel.addDataChangedListener(lineDataProvider);
 
 			// MapChart
-			SpectrumModel spectrumModel = new SpectrumModel(dataSize / Spectrum_Step, Spectrum_Size, Spectrum_Step);
+			SpectrumModel spectrumModel = new SpectrumModel(getDataSize() / getSpectrum_Size(), getSpectrum_Size(), getSpectrum_Step());
 			dataModel.addDataChangedListener(spectrumModel);
 			final DataProvider<double[]> mapDataProvider = new DataProvider<double[]>();
 			spectrumModel.addDataChangedListener(mapDataProvider);
@@ -73,18 +62,14 @@ public class MicroRecorderEntry extends DynamicEntry {
 
 				@Override
 				public void onStop() {
-					System.out.println("song loaded");
-
 				}
 
 				@Override
 				public void onStart() {
-					System.out.println("song loading...");
 				}
 
 				@Override
 				public void onRecord(int[] newdata) {
-					System.out.println("appending record");
 					dataModel.append(newdata);
 					// TO-DO proposer l'autoscaling en parametre de la méthode
 					// par défaut pas d'autoscale en X
@@ -101,11 +86,11 @@ public class MicroRecorderEntry extends DynamicEntry {
 				throw new IllegalAction("This Entry is already beeing used");
 			}
 
-			SoundAcquisitionParams sap = new SoundAcquisitionParams(SAP_SampleRate);
+			SoundAcquisitionParams sap = new SoundAcquisitionParams(getSAP_SampleRate());
 
 			// LineChart
-			if (isLineChart = (chartView instanceof LineChartView)) {
-				final XYSampledCircularData lineChartData = new DefaultXYSampledData(dataSize, sap);
+			if (chartView instanceof LineChartView) {
+				final XYSampledCircularData lineChartData = new DefaultXYSampledData(getDataSize(), sap);
 				((LineChartModel) chartView.chartModel()).setData(lineChartData);
 
 				Timer swingTimer = new Timer(50, new ActionListener() {
@@ -120,8 +105,6 @@ public class MicroRecorderEntry extends DynamicEntry {
 								break;
 							}
 							lineChartData.add(v.doubleValue());
-							// chartView.autoScaleX(new DefaultAutoScaleStrategy(0.1));
-							// chartView.autoScaleY(new DefaultAutoScaleStrategy(0.1));
 							chartView.chartModel().modelChange();
 						}
 					}
@@ -130,8 +113,8 @@ public class MicroRecorderEntry extends DynamicEntry {
 			}
 
 			// MapChart
-			else if (isMapChart = (chartView instanceof MapChartView)) {
-				final MapSampledCircularData mapChartData = new DefaultMapSampleData(dataSize, sap, Spectrum_Step);
+			else if (chartView instanceof MapChartView) {
+				final MapSampledCircularData mapChartData = new DefaultMapSampleData(getDataSize(), sap, getSpectrum_Step());
 				((MapChartModel) chartView.chartModel()).setData(mapChartData);
 
 				Timer swingTimer = new Timer(50, new ActionListener() {
@@ -178,14 +161,14 @@ public class MicroRecorderEntry extends DynamicEntry {
 			}
 
 			Recorder recorder = new MicroRecorder();
-			final DataModel dataModel = new DataModel(dataSize);
+			final DataModel dataModel = new DataModel(getDataSize());
 
 			// LineChart
 			final DataProvider<Integer> lineDataProvider = new DataProvider<Integer>();
 			dataModel.addDataChangedListener(lineDataProvider);
 
 			// MapChart
-			SpectrumModel spectrumModel = new SpectrumModel(dataSize / Spectrum_Step, Spectrum_Size, Spectrum_Step);
+			SpectrumModel spectrumModel = new SpectrumModel(getDataSize() / getSpectrum_Size(), getSpectrum_Size(), getSpectrum_Step());
 			dataModel.addDataChangedListener(spectrumModel);
 			final DataProvider<double[]> mapDataProvider = new DataProvider<double[]>();
 			spectrumModel.addDataChangedListener(mapDataProvider);
@@ -194,24 +177,20 @@ public class MicroRecorderEntry extends DynamicEntry {
 
 				@Override
 				public void onStop() {
-					System.out.println("song loaded");
 
 				}
 
 				@Override
 				public void onStart() {
-					System.out.println("song loading...");
 				}
 
 				@Override
 				public void onRecord(int[] newdata) {
-					System.out.println("appending record");
 					dataModel.append(newdata);
 					// TO-DO proposer l'autoscaling en parametre de la méthode
 					// par défaut pas d'autoscale en X
 					// X autoscale en paramètre l'utiliser ici
 					// chartView.autoScaleX(new DefaultAutoScaleStrategy(0.1));
-					lineChartView.autoScaleY(new DefaultAutoScaleStrategy(0.1));
 				}
 			});
 
@@ -222,14 +201,14 @@ public class MicroRecorderEntry extends DynamicEntry {
 				throw new IllegalAction("This Entry is already beeing used");
 			}
 
-			SoundAcquisitionParams sap = new SoundAcquisitionParams(SAP_SampleRate);
+			SoundAcquisitionParams sap = new SoundAcquisitionParams(getSAP_SampleRate());
 
 			// LineChart
-			final XYSampledCircularData lineChartData = new DefaultXYSampledData(dataSize, sap);
+			final XYSampledCircularData lineChartData = new DefaultXYSampledData(getDataSize(), sap);
 			((LineChartModel) lineChartView.chartModel()).setData(lineChartData);
 
 			//MapChart
-			final MapSampledCircularData mapChartData = new DefaultMapSampleData(dataSize, sap, Spectrum_Step);
+			final MapSampledCircularData mapChartData = new DefaultMapSampleData(getDataSize(), sap, getSpectrum_Step());
 			((MapChartModel) mapChartView.chartModel()).setData(mapChartData);
 			
 			Timer swingTimer = new Timer(50, new ActionListener() {
