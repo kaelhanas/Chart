@@ -1,0 +1,24 @@
+-----------
+Général
+-----------
+
+Introcude a Entry.type to filter entrance data for each kind of Chart.
+Pbly needing to make a different inserTo() methods for each kind of available Chart.
+
+
+-----------
+BarChart
+-----------
+
+1) Implement a new XYData abstraction related to BarChart 
+	-> Taking an : ArrayList<Double[]>(Size = TableSelected
+	
+2) Comaptible Entry :
+	-> Json => implements the parser
+	-> XML => implements the parser
+	-> CSV
+	-> ...
+	
+	
+
+	

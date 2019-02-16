@@ -12,6 +12,7 @@ import jmp.chart.data.xy.DefaultXYVectorData;
 import jmp.chart.data.xy.XYData;
 import jmp.chart.data.xy.XYVectorData;
 import jmp.chart.model.chartModel.DefaultAutoScaleStrategy;
+import jmp.chart.view.BarChartView;
 import jmp.chart.view.ChartView;
 
 public class CSVStaticEntry extends StaticEntry {
@@ -33,17 +34,6 @@ public class CSVStaticEntry extends StaticEntry {
 
 	}
 
-	public void insertTo(ChartView chartView) {
-
-		try {
-			data = readCSV(this.getPath(),chartView, xIndex, yIndex);
-		} catch (IndexOutOfBoundsException | IOException e) {
-			e.printStackTrace();
-		}
-
-		chartView.chartModel().setData(data);
-		chartView.autoScale(new DefaultAutoScaleStrategy(1), new DefaultAutoScaleStrategy(1));
-	}
 
 	private DefaultXYVectorData readCSV(String path, ChartView chartView, int xIndex, int yIndex)
 			throws IOException, FileNotFoundException, IndexOutOfBoundsException {
@@ -130,6 +120,22 @@ public class CSVStaticEntry extends StaticEntry {
 		scanner.close();
 		reader.close();
 		return hasLabel;
+	}
+	
+	public void insertTo(ChartView chartView) {
+
+		try {
+			data = readCSV(this.getPath(),chartView, xIndex, yIndex);
+		} catch (IndexOutOfBoundsException | IOException e) {
+			e.printStackTrace();
+		}
+
+		chartView.chartModel().setData(data);
+		chartView.autoScale(new DefaultAutoScaleStrategy(1), new DefaultAutoScaleStrategy(1));
+	}
+	
+	public void insertTo(BarChartView chartView) {
+		
 	}
 
 }
